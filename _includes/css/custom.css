@@ -1,0 +1,13 @@
+#intro{
+	min-height: 436px;
+	
+}
+
+@media only screen and (max-width: 768px) {
+	#intro{
+		background: #fff;
+		min-height: 200px;
+		background-position: right;
+
+	}
+	}

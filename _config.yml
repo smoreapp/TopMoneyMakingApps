@@ -1,0 +1,40 @@
+---
+
+port: 4000
+host: 0.0.0.0
+safe: false
+
+
+### site serving configuration ###
+exclude: [CNAME, README.md, .gitignore]
+permalink: /:title ## disables post output
+timezone: null
+lsi: false
+markdown: kramdown
+highlighter: rouge
+
+
+### content configuration ###
+title:       "Money Making Apps - Earn Extra Money using your Android Phone"
+keywords:    ""
+description: "Want to earn extra money? Here are a few apps that make it easy to earn some extra money using your Android phone."
+source_link: "https://github.com/t413/SinglePaged"
+favicon:     "img/favicon.ico"
+touch_icon:  "img/apple-touch-icon.png"
+google_analytics_key: ## put YOUR key here to enable tracking! (blank to disable)
+
+
+### template colors, used site-wide via css ###
+colors:
+  black:     '#111111'
+  white:     '#f8f8f8'
+  teal:      '#33a39c'
+  light-blue:     '#9bcf2f'
+  blue:    '#336cad'
+  royal-blue:    '3348b3'
+  purple: '#4533b8'
+  smore: 'url(http://smoreapp.co/wp-content/uploads/2016/04/camping-modal.jpg)'
+
+kramdown:
+  auto_ids:  false
+
