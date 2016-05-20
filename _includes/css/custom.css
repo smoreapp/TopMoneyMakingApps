@@ -1,13 +1,18 @@
 #intro{
 	min-height: 436px;
+	min-width: 100%;
+	background-size: cover;
 	
 }
 
 @media only screen and (max-width: 768px) {
 	#intro{
-		background: #fff;
-		min-height: 200px;
-		background-position: right;
+		background: url(img/apps-to-save-money-mob.jpg) no-repeat 100% 0 !important;
+		background-size: ;
+		max-height: 200px !important;
+		min-height: 200px !important;
+		height: 200px !important;
+		padding: 20px;
 
-	}
+		}
 	}
