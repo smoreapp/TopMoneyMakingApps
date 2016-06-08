@@ -93,3 +93,163 @@ $(document).ready(function (){
 
 });
 
+/*****
+<!-- START WOAHbar FOR DESKTOP  -->
+
+var theState;
+    // Get the cookie and state open or closed
+    function getCookie(key) {  
+        var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');  
+        return keyValue ? keyValue[2] : null;  
+    }
+   theState = getCookie('state');
+
+
+var stub_showing = false;
+ 
+    function woahbar_show() { 
+        if(stub_showing) {
+          $('.woahbar-stub').slideUp('fast', function() {
+            $('.woahbar').show('bounce', { times:3, distance:15 }, 500);
+            $('body').animate({"marginTop": "32px"}, 250);
+          }); 
+        }
+
+        else {
+          setTimeout(function() {
+             $('.woahbar').show('bounce', { times:3, distance:15 }, 500);
+             $('body').animate({"marginTop": "32px"});
+             }, 800);
+          }
+        }
+ 
+    function woahbar_hide() { 
+        $('.woahbar').slideUp('fast', function() {
+          $('.woahbar-stub').show('bounce', { times:3, distance:15 }, 500);
+          stub_showing = true;
+        }); 
+
+ 
+        if( $(window).width() > 1024 ) {
+          $('body').animate({"marginTop": "0px"}, 250); // if width greater than 1024 pull up the body
+        }
+    }
+ 
+    $().ready(function() {
+        window.setTimeout(function() {
+            // depending on the cookie, open or close the bar
+            if (theState == "closed")
+            { woahbar_hide(); } 
+            if (theState == null || theState == "open")
+            { woahbar_show(); } 
+        
+     }, 0);
+    });
+
+
+
+<!-- END WOAHbar FOR DESKTOP / START WOAHbar FOR MOBILE  -->
+
+
+
+var mstub_showing = false;
+ 
+    function mwoahbar_show() { 
+        if(mstub_showing) {
+          $('.mwoahbar-stub').slideUp('fast', function() {
+            $('.mwoahbar').show('bounce', { times:3, distance:15 }, 500);
+            $('body').animate({"marginTop": "32px"}, 250);
+          }); 
+
+
+          // Set the cookie once the bar is hidden 
+          function setCookie(key, value) {  
+             var expires = new Date();  
+             expires.setTime(expires.getTime() + 432000000); //5 days 432000000
+             document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();  
+             }  
+                setCookie('state', 'open');  
+        
+        }
+
+        else {
+          setTimeout(function() {
+             $('.mwoahbar').show('bounce', { times:3, distance:15 }, 500);
+             $('body').animate({"marginTop": "32px"});
+             }, 800);
+          }
+        }
+ 
+    function mwoahbar_hide() { 
+        $('.mwoahbar').slideUp('fast', function() {
+          $('.mwoahbar-stub').show('bounce', { times:3, distance:15 }, 500);
+          mstub_showing = true;
+        }); 
+
+
+        // Set the cookie once the bar is hidden 
+        function setCookie(key, value) {  
+           var expires = new Date();  
+           expires.setTime(expires.getTime() + 432000000); //5 days 432000000
+           document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();  
+           }  
+            setCookie('state', 'closed');  
+
+ 
+        if( $(window).width() < 1024 ) {
+          $('body').animate({"marginTop": "0px"}, 250); // if width greater than 1024 pull up the body
+        }
+    }
+ 
+    $().ready(function() {
+        window.setTimeout(function() {
+            // depending on the cookie, open or close the bar
+            if (theState == "closed")
+            { mwoahbar_hide(); } 
+            if (theState == null || theState == "open")
+            { mwoahbar_show(); } 
+        
+     }, 0);
+    });
+
+<!-- END WOAHbar FOR MOBILE  -->
+**/
+var time = 3000;
+function isMobile() {
+  console.log("inner width:" + window.innerWidth + " & height:" + window.innerHeight);
+  if (window.innerWidth <= 860 && window.innerHeight <= 600) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+if ( isMobile() ) {
+  console.log("isMoble returned true, modal firing in :" + time);
+  setTimeout(function (){
+    $('#ouibounce-modal').show();
+    console.log('mobile modal fired');
+  }, time);
+} else {
+  console.log('isMobile returned false');
+  // if you want to use the 'fire' or 'disable' fn,
+    // you need to save OuiBounce to an object
+    var _ouibounce = ouibounce(document.getElementById('ouibounce-modal'), {
+        aggressive: true,
+        timer: 0,
+        callback: function() { console.log('ouibounce fired!'); }
+    });
+
+    $('body').on('click', function() {
+      $('#ouibounce-modal').hide();
+    });
+
+    $('#ouibounce-modal .modal-footer').on('click', function() {
+      $('#ouibounce-modal').hide();
+    });
+
+    $('#ouibounce-modal .modal').on('click', function(e) {
+      e.stopPropagation();
+    });
+}
+
